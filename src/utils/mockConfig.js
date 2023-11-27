@@ -33,12 +33,6 @@ const mockConfig = (mock) => {
 
     if (index !== -1) {
       tasks[index].isCompleted = !tasks[index].isCompleted;
-
-      if (tasks[index].isCompleted) {
-        tasks.push(tasks.splice(index, 1)[0]);
-      } else {
-        tasks.unshift(tasks.splice(index, 1)[0]);
-      }
     }
   };
 
@@ -102,13 +96,11 @@ const mockConfig = (mock) => {
     addTask(newTask);
     const event = new CustomEvent("createTask", { detail: newTask });
     window.dispatchEvent(event);
-    console.log(tasks);
     return res.status(200);
   });
   mock.post("/api/editTask", (req, res) => {
     const editedTask = JSON.parse(req.body());
     editTask(editedTask);
-    // console.log(tasks);
     const event = new CustomEvent("editTask", { detail: editedTask });
     window.dispatchEvent(event);
     return res.status(200);

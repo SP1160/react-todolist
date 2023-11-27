@@ -4,11 +4,15 @@ import { ListGroup, Button, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const TaskList = ({ onHandleAddTask }) => {
+const TaskList = ({ onHandleAddTask, onHandleEditTask }) => {
   const [tasks, setTasks] = useState([]);
 
   const handleAddTaskClick = () => {
     onHandleAddTask();
+  };
+
+  const handleEditTaskClick = (id) => {
+    onHandleEditTask(id);
   };
 
   const getTasks = async () => {
@@ -40,10 +44,6 @@ const TaskList = ({ onHandleAddTask }) => {
     }
   };
 
-  const getEditTaskId = (id) => {
-    onHandleAddTask(id);
-  };
-
   useEffect(() => {
     getTasks();
   }, []);
@@ -71,7 +71,7 @@ const TaskList = ({ onHandleAddTask }) => {
                 data-testid="btn-edit"
                 variant="link"
                 className="d-flex align-items-center text-decoration-none p-0"
-                onClick={() => getEditTaskId(item.id)}
+                onClick={() => handleEditTaskClick(item.id)}
               >
                 <i className="fa-solid fa-pen"></i>
               </Button>

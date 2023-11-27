@@ -4,7 +4,12 @@ import TaskList from "../tasks-list/TaskList";
 
 const TaskListPage = () => {
   const navigate = useNavigate();
-  return <TaskList onHandleAddTask={(id) => navigate(`/editForm/${id}`)} />;
+  return (
+    <TaskList
+      onHandleAddTask={() => navigate(`/createForm`)}
+      onHandleEditTask={(id) => navigate(`/editForm/${id}`)}
+    />
+  );
 };
 
 export default TaskListPage;

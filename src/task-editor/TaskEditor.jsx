@@ -3,9 +3,13 @@ import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const TaskEditor = ({ initialId }) => {
+const TaskEditor = ({ initialId, onHomePage }) => {
   const [taskData, setTaskData] = useState({ name: "", priority: "1" });
   const [initialTask, setInitialTask] = useState();
+
+  const handleClickToHome = () => {
+    onHomePage();
+  };
 
   const getTaskById = async (taskId) => {
     try {
@@ -38,8 +42,14 @@ const TaskEditor = ({ initialId }) => {
       } else {
         if (initialTask) {
           await axios.post("/api/editTask", taskData);
+          if (onHomePage) {
+            handleClickToHome();
+          }
         } else {
           await axios.post("/api/createTask", taskData);
+          if (onHomePage) {
+            handleClickToHome();
+          }
         }
       }
     } catch (error) {
@@ -52,6 +62,9 @@ const TaskEditor = ({ initialId }) => {
       setTaskData(initialTask);
     } else {
       setTaskData({ name: "", priority: "1" });
+    }
+    if (onHomePage) {
+      handleClickToHome();
     }
   };
 
