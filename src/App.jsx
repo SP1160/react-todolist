@@ -7,7 +7,7 @@ import Error from "./pages/Error";
 import AxiosMock from "./utils/AxiosMock";
 import mockConfig from "./utils/mockConfig";
 
-const App = () => {
+function App() {
   return (
     <AxiosMock config={mockConfig}>
       <Routes>
@@ -18,6 +18,6 @@ const App = () => {
       </Routes>
     </AxiosMock>
   );
-};
+}
 
 export default App;
