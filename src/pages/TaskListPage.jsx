@@ -6,7 +6,7 @@ const TaskListPage = () => {
   const navigate = useNavigate();
   return (
     <TaskList
-      onHandleAddTask={() => navigate(`/createForm`)}
+      onHandleAddTask={() => navigate("/createForm")}
       onHandleEditTask={(id) => navigate(`/editForm/${id}`)}
     />
   );

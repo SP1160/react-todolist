@@ -1,6 +1,7 @@
-import TaskEditorContainer from "./__stories__/TaskEditorContainer";
+import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import TaskEditorContainer from "./__stories__/TaskEditorContainer";
 
 describe("TaskEditorContainer", () => {
   const taskNameInputPlaceholder = /enter your task/i;

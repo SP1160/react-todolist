@@ -7,17 +7,15 @@ import Error from "./pages/Error";
 import AxiosMock from "./utils/AxiosMock";
 import mockConfig from "./utils/mockConfig";
 
-function App() {
-  return (
-    <AxiosMock config={mockConfig}>
-      <Routes>
-        <Route path="/" element={<TaskListPage />} />
-        <Route path="/createForm" element={<TaskEditorCreatePage />} />
-        <Route path="/editForm/:taskId" element={<TaskEditorEditPage />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </AxiosMock>
-  );
-}
+const App = () => (
+  <AxiosMock config={mockConfig}>
+    <Routes>
+      <Route path="/" element={<TaskListPage />} />
+      <Route path="/createForm" element={<TaskEditorCreatePage />} />
+      <Route path="/editForm/:taskId" element={<TaskEditorEditPage />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
+  </AxiosMock>
+);
 
 export default App;

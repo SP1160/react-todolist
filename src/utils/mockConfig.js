@@ -68,14 +68,9 @@ const mockConfig = (mock) => {
     }
   };
 
-  const findTaskById = (id) => {
-    return tasks.find((task) => task.id === id);
-  };
+  const findTaskById = (id) => tasks.find((task) => task.id === id);
 
-  mock.post("/api/getTaskList", (req, res) => {
-    console.log(tasks);
-    return res.status(200).body(JSON.stringify(tasks));
-  });
+  mock.post("/api/getTaskList", (req, res) => res.status(200).body(JSON.stringify(tasks)));
   mock.post("/api/getTaskById", (req, res) => {
     const { id } = JSON.parse(req.body());
     const task = findTaskById(id);

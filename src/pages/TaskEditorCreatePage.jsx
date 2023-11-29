@@ -1,6 +1,6 @@
 import React from "react";
-import TaskEditor from "../task-editor/TaskEditor";
 import { useNavigate } from "react-router-dom";
+import TaskEditor from "../task-editor/TaskEditor";
 
 const TaskEditorCreatePage = () => {
   const navigate = useNavigate();

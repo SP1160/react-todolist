@@ -19,7 +19,7 @@ const TaskEditor = ({ initialId, onHomePage }) => {
         setInitialTask(data);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -39,21 +39,19 @@ const TaskEditor = ({ initialId, onHomePage }) => {
     try {
       if (taskData.name === "") {
         alert("Fill in the name field!");
+      } else if (initialTask) {
+        await axios.post("/api/editTask", taskData);
+        if (onHomePage) {
+          handleClickToHome();
+        }
       } else {
-        if (initialTask) {
-          await axios.post("/api/editTask", taskData);
-          if (onHomePage) {
-            handleClickToHome();
-          }
-        } else {
-          await axios.post("/api/createTask", taskData);
-          if (onHomePage) {
-            handleClickToHome();
-          }
+        await axios.post("/api/createTask", taskData);
+        if (onHomePage) {
+          handleClickToHome();
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { ListGroup, Button, Container } from "react-bootstrap";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
 const TaskList = ({ onHandleAddTask, onHandleEditTask }) => {
@@ -20,7 +20,7 @@ const TaskList = ({ onHandleAddTask, onHandleEditTask }) => {
       const { data } = await axios.post("/api/getTaskList");
       setTasks(data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -40,7 +40,7 @@ const TaskList = ({ onHandleAddTask, onHandleEditTask }) => {
       await axios.post("/api/completeTask", { id });
       getTasks();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -65,7 +65,7 @@ const TaskList = ({ onHandleAddTask, onHandleEditTask }) => {
                 className="d-flex align-items-center text-decoration-none p-0"
                 onClick={() => deteleTask(item.id)}
               >
-                <i className="fa-solid fa-xmark fa-xl text-danger"></i>
+                <i className="fa-solid fa-xmark fa-xl text-danger" />
               </Button>
               <Button
                 data-testid="btn-edit"
@@ -73,7 +73,7 @@ const TaskList = ({ onHandleAddTask, onHandleEditTask }) => {
                 className="d-flex align-items-center text-decoration-none p-0"
                 onClick={() => handleEditTaskClick(item.id)}
               >
-                <i className="fa-solid fa-pen"></i>
+                <i className="fa-solid fa-pen" />
               </Button>
               <Button
                 data-testid="btn-complete"
@@ -81,7 +81,7 @@ const TaskList = ({ onHandleAddTask, onHandleEditTask }) => {
                 className="d-flex align-items-center text-decoration-none p-0"
                 onClick={() => completeTask(item.id)}
               >
-                <i className="fa-solid fa-check fa-xl text-success"></i>
+                <i className="fa-solid fa-check fa-xl text-success" />
               </Button>
             </div>
           </ListGroup.Item>

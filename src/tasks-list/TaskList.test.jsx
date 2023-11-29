@@ -1,6 +1,7 @@
-import TaskListContainer from "./__stories__/TaskListContainer";
+import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import TaskListContainer from "./__stories__/TaskListContainer";
 
 describe("TaskListContainer", () => {
   test("Удаление задачи", async () => {

@@ -5,11 +5,9 @@ const AxiosMock = ({ children, config }) => {
   mock.setup();
   config(mock);
 
-  useEffect(() => {
-    return () => {
-      mock.teardown();
-      mock.reset();
-    };
+  useEffect(() => () => {
+    mock.teardown();
+    mock.reset();
   });
 
   return children;
